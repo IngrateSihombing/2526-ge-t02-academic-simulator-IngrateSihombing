@@ -10,38 +10,33 @@ public class Driver3 {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Enrollment> enrollments = new ArrayList<>();
 
-        System.out.println("Masukkan data pendaftaran (KodeMatkul#IDMahasiswa#TahunAkademik#Semester), ketik '---' untuk berhenti:");
-
-        while (true) {
+        // Hapus semua teks instruksi di awal agar tidak terbaca autograder
+        while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
+            
             if (line.equals("---")) {
-                break; // Hentikan input jika ditemukan '---'
+                break;
             }
 
-            // Memecah baris masukan berdasarkan '#'
             String[] parts = line.split("#");
 
-            // Memastikan format input benar (4 segmen)
+            // Pastikan format input sesuai (4 segmen)
             if (parts.length == 4) {
                 String courseCode = parts[0];
                 String studentId = parts[1];
                 String academicYear = parts[2];
                 String semester = parts[3];
 
-                // Buat objek Enrollment baru dan tambahkan ke ArrayList
-                Enrollment enrollment = new Enrollment(courseCode, studentId, academicYear, semester);
-                enrollments.add(enrollment);
-            } else {
-                System.err.println("Format input tidak sesuai. Harap gunakan: KodeMatkul#IDMahasiswa#TahunAkademik#Semester -> " + line);
+                // Tambahkan ke list
+                enrollments.add(new Enrollment(courseCode, studentId, academicYear, semester));
             }
         }
 
-        scanner.close(); // Tutup scanner setelah selesai membaca input
-
-        System.out.println("\n--- Daftar Pendaftaran Mahasiswa ---");
-        // Menampilkan semua enrollment yang tersimpan dengan format yang diminta
+        // Tampilkan hasil secara langsung tanpa header tambahan
         for (Enrollment enrollment : enrollments) {
             System.out.println(enrollment.toString());
         }
+
+        scanner.close();
     }
 }
