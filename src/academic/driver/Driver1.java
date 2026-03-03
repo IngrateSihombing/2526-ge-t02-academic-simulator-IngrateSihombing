@@ -1,4 +1,4 @@
-/*12S24022_Ingrate Joy Sihombing*/
+/*12S24022_Ingrate Joy Sihombingg*/
 package academic.driver;
 
 import academic.model.Course;
