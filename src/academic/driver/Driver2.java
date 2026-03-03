@@ -10,35 +10,42 @@ public class Driver2 {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Student> students = new ArrayList<>();
 
-        // Autograder tidak memerlukan teks instruksi di awal
-        while (scanner.hasNextLine()) {
+        System.out.println("Masukkan data mahasiswa (ID#Nama#TahunAngkatan#ProgramStudi), ketik '---' untuk berhenti:");
+
+        while (true) {
             String line = scanner.nextLine();
-            
-            // Berhenti jika menemukan tanda ---
             if (line.equals("---")) {
-                break;
+                break; // Hentikan input jika ditemukan '---'
             }
 
+            // Memecah baris masukan berdasarkan '#'
             String[] parts = line.split("#");
 
-            // Pastikan format input sesuai (4 bagian)
+            // Memastikan format input benar (4 segmen)
             if (parts.length == 4) {
-                String id = parts[0];
-                String name = parts[1];
-                // Mengambil tahun (year) dan prodi (studyProgram)
-                String year = parts[2]; 
-                String studyProgram = parts[3];
+                try {
+                    String id = parts[0];
+                    String name = parts[1];
+                    int year = Integer.parseInt(parts[2]); // Konversi Tahun Angkatan ke integer
+                    String studyProgram = parts[3];
 
-                // Menambahkan ke list
-                students.add(new Student(id, name, year, studyProgram));
+                    // Buat objek Student baru dan tambahkan ke ArrayList
+                    Student student = new Student(id, name, year, studyProgram);
+                    students.add(student);
+                } catch (NumberFormatException e) {
+                    System.err.println("Kesalahan format Tahun Angkatan. Mohon masukkan angka: " + line);
+                }
+            } else {
+                System.err.println("Format input tidak sesuai. Harap gunakan: ID#Nama#TahunAngkatan#ProgramStudi -> " + line);
             }
         }
 
-        // Cetak hasil akhir secara bersih tanpa teks tambahan
+        scanner.close(); // Tutup scanner setelah selesai membaca input
+
+        System.out.println("\n--- Daftar Mahasiswa yang Tersimpan ---");
+        // Menampilkan semua student yang tersimpan dengan format yang diminta
         for (Student student : students) {
             System.out.println(student.toString());
         }
-
-        scanner.close();
     }
 }
