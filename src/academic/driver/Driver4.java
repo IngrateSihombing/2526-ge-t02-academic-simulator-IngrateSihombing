@@ -17,7 +17,7 @@ public class Driver4 {
         List<Student> students = new ArrayList<>();
         List<Enrollment> enrollments = new ArrayList<>();
 
-        
+        System.out.println("Masukkan data (course-add#... atau student-add#... atau enrollment-add#...), ketik '---' untuk berhenti:");
 
         while (true) {
             String line = scanner.nextLine();

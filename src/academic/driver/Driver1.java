@@ -12,6 +12,7 @@ public class Driver1 {
         // yang fleksibel untuk jumlah data yang dinamis.
         ArrayList<Course> courses = new ArrayList<>(); 
 
+        System.out.println("Masukkan data course (kode#nama#sks#grade), ketik '---' untuk berhenti:");
 
         while (true) {
             String line = scanner.nextLine();

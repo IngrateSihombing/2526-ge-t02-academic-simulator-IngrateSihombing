@@ -10,7 +10,7 @@ public class Driver2 {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Student> students = new ArrayList<>();
 
-      
+        System.out.println("Masukkan data mahasiswa (ID#Nama#TahunAngkatan#ProgramStudi), ketik '---' untuk berhenti:");
 
         while (true) {
             String line = scanner.nextLine();

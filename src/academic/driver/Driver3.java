@@ -10,7 +10,8 @@ public class Driver3 {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Enrollment> enrollments = new ArrayList<>();
 
-        
+        System.out.println("Masukkan data pendaftaran (KodeMatkul#IDMahasiswa#TahunAkademik#Semester), ketik '---' untuk berhenti:");
+
         while (true) {
             String line = scanner.nextLine();
             if (line.equals("---")) {
